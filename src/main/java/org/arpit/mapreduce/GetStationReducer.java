@@ -7,9 +7,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Arpit on 2/25/2015.
- */
+
 public class GetStationReducer extends Reducer<Text, NullWritable, Text, Text> {
 
     private GSODStationParser metadata;
