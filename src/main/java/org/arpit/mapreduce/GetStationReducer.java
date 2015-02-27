@@ -15,7 +15,7 @@ public class GetStationReducer extends Reducer<Text, NullWritable, Text, Text> {
     @Override
     public void setup(Context context) throws IOException, InterruptedException {
         metadata = new GSODStationParser();
-        metadata.initialize(new File("is-history.txt"));
+        metadata.initialize(new File("isd-history.txt"));
     }
 
     public void reduce(NullWritable key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
