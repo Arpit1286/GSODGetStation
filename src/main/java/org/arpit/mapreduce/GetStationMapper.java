@@ -10,13 +10,13 @@ import java.io.IOException;
 /**
  * Created by Arpit on 2/25/2015.
  */
-public class GetStationMapper extends Mapper<LongWritable, Text, NullWritable, Text> {
+public class GetStationMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 
     private GSODParser parser = new GSODParser();
 
     public void map(LongWritable key, Text value, Context context) throws InterruptedException, IOException {
 
         parser.parse(value);
-        context.write(NullWritable.get(), new Text(parser.getStationID()));
+        context.write(new Text(parser.getStationID()), NullWritable.get());
     }
 }
