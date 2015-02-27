@@ -1,6 +1,7 @@
 package org.arpit.mapreduce;
 
 import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.mapreduce.Job;
@@ -17,8 +18,11 @@ public class GetStation extends Configured implements Tool {
             return -1;
         }
 
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(NullWritable.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
+
 
         job.setMapperClass(GetStationMapper.class);
         job.setReducerClass(GetStationReducer.class);
