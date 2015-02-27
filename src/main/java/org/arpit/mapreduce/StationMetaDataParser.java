@@ -15,6 +15,9 @@ public class StationMetaDataParser {
 
     public boolean parse(String record) {
 
+        if (record.length() < 69) {
+            return false;
+        }
         String usaf = record.substring(0, 7);
         String wban = record.substring(7, 12);
         stationID = usaf + "-" + wban;
