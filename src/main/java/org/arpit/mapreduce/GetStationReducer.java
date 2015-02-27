@@ -18,9 +18,11 @@ public class GetStationReducer extends Reducer<Text, NullWritable, Text, Text> {
         metadata.initialize(new File("is-history.txt"));
     }
 
-    public void redduce(Text key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
+    public void reduce(NullWritable key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
+
 
         String stationName = metadata.getStationName(key.toString());
-        context.write(new Text(stationName), new );
+        String ID = key.toString();
+        context.write(new Text(stationName), new Text(ID));
     }
 }
